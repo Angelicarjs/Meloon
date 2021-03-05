@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 // Third-party imports
-import { StyledCard, Title, Info } from './styledComponents'
+import { StyledCard, Title, Info, Button } from './styledComponents'
 // Next imports
 import Link from 'next/link'
+// Components
+import Header from './Header'
 
 function SellOrderList() {
 
@@ -10,8 +12,9 @@ function SellOrderList() {
     background: 'white'
   })
   return (
-
-      <StyledCard
+    <>
+    <Header/>
+    <StyledCard
         background={state.background}
         style={{ cursor: 'pointer' }}
         onMouseOver={() => setState({ ...state, background: 'rgb(240,243,248)' })}
@@ -46,6 +49,7 @@ function SellOrderList() {
           </Link>
         </div>
       </StyledCard>
+    </>
   )
 }
 
