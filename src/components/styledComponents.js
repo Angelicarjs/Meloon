@@ -19,7 +19,7 @@ export const Button = styled.div`
     background-color: #a7ca70;
     box-shadow: ${BOX_SHADOW};
     font-family: Poppins, sans-serif;
-    padding: 5%;
+    padding: 1em;
     color: #fff;
     font-size: 14px;
     line-height: 160%;`
@@ -78,7 +78,7 @@ export const DocumentDiv = styled.div`
 export const RowDiv = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-content: center;
   align-items: center;
   min-height: ${(props) => props.height};
@@ -95,10 +95,10 @@ export const RowDiv = styled.div`
   }
 `
 
-export const ProductsHeaderDiv = styled.div`
+export const ProductsDiv = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-content: center;
   align-items: center;
   border-top: 2.5px solid ${PRIMARY_COLOR};
@@ -110,54 +110,21 @@ export const ProductsHeaderDiv = styled.div`
   }
 `
 
-export const ProductsDiv = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  align-content: center;
-  align-items: center;
-  padding: 2% 2% 0% 2%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  p {
-    color: grey;
-  }
-`
-
 export const ProductItem = styled.p`
   color: ${(props) => (props.empty ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.8)')};
 `
-
-export const SummaryDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: space-evenly;
-  align-items: flex-end;
-  width: 100%;
-  padding: 2%;
-  margin-top: 10%;
+export const Input = styled.input`
+  border: solid, 1px, red;
+  marginLeft: 1em;
+  border-radius: 5px;
+  box-shadow: 3px 3px 15px 0 hsl(0deg 0% 66% / 30%);
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border: 1px solid transparent;
+  lenght: 5em;
+  width: ${(props) => props.width || '100%'};
 `
-
-export const SummaryRow = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  align-content: center;
-  align-items: center;
-  margin-bottom: 2%;
-  h6 {
-    color: grey;
-  }
-  h4 {
-    color: grey;
-  }
-  h5 {
-    color: grey;
-    font-size: 1.2em;
-  }
-`
-
-export const SummaryItem = styled.div`
-  width: 100%;
-  text-align: right;
+export const BuyerTitle = styled.p`
+fontSize:'1px';
+margin: '1em';
 `

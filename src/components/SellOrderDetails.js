@@ -7,7 +7,6 @@ import {
     BackgroundDiv,
     DocumentDiv,
     RowDiv,
-    ProductsHeaderDiv,
     ProductsDiv,
     ProductItem,
     PRIMARY_COLOR
@@ -53,11 +52,15 @@ function SellOrderDetails() {
                     <div className='row'>
                       <div className='col-9 text-center'>
                         <div className='row'>
-                          <div className='col-6 text-right' style={{ padding: 0 }}>
-                            <p style={{ fontWeight: '600' }}>Buyer full name</p>
-                            <p style={{ fontWeight: '600' }}>Buyer phone number</p>
-                            <p style={{ fontWeight: '600' }}>Buyer phone number</p>
-                            <p style={{ fontWeight: '600' }}>Buyer email</p>
+                          <div className='col-6 text-left' style={{ padding: 0 }}>
+                            <p style={{ fontWeight: '500' }}>Buyer full name</p>
+                            <p style={{ fontWeight: '500' }}>Buyer phone number</p>
+                            <p style={{ fontWeight: '500' }}>Buyer email</p>
+                          </div>
+                          <div className='col-6 text-left' style={{ padding: 0 }}>
+                            <p>Angelica Moreno</p>
+                            <p>3213223925</p>
+                            <p>angelica_uno@hotmail.es</p>
                           </div>
                         </div>
                       </div>
@@ -86,7 +89,7 @@ function SellOrderDetails() {
     
               <br />
     
-              <ProductsHeaderDiv>
+              <ProductsDiv>
                 <div style={{ textAlign: 'center', width: '30%' }}>
                   <p>Product Name</p>
                 </div>
@@ -98,7 +101,7 @@ function SellOrderDetails() {
                 </div>
 
                 <div style={{ textAlign: 'right', width: '3%' }} />
-              </ProductsHeaderDiv>
+              </ProductsDiv>
     
               <ProductsDiv>
                 <div style={{ textAlign: 'center', width: '30%' }}>
