@@ -9,13 +9,14 @@ import {
   DocumentDiv,
   RowDiv,
   ProductsDiv,
-  ProductItem,
+  ProductsDivHeader,
   PRIMARY_COLOR, 
   Button,
   Input
 } from './styledComponents'
 
 const initialState = {
+  isFirstRender: true,
   sellerStoreName: null,
   sellerStore: null,
   shippingMethod: null,
@@ -27,12 +28,16 @@ const initialState = {
   shippingCity: null,
   shippingRegion: null,
   shippingCountry: null,
-  products: []
+  products: [
+   {number: 1,
+    name: undefined,
+    quantity: undefined,
+    weight: undefined}
+  ]
 }
 
 
 function SellOrderCreation() {
-  
   const methods = []
   async function postData(url) {
     await fetch(url, {
@@ -50,8 +55,6 @@ function SellOrderCreation() {
     
   }
 
-  console.log(typeof(methods))
-
   //Retrieve the list of available shipping methods:
 
   postData("https://yhua9e1l30.execute-api.us-east-1.amazonaws.com/sandbox/shipping-methods")
@@ -67,6 +70,8 @@ function SellOrderCreation() {
 
   const [state, setState] = useState({ ...initialState })
 
+  const { products } = state
+
   const addInfo = (target) => {
     setState({
       ...state,
@@ -74,21 +79,31 @@ function SellOrderCreation() {
     })
   }
 
-  /* const addLine = () =>
+  const addLine = () =>
     setState({
       ...state,
       products: products.concat([
         {
-          item: undefined,
-          code: undefined,
-          price: undefined,
-          tax: undefined,
-          quantity: 1,
-          total: undefined,
-          emptyQuantityError: false
+          number:products.length + 1,
+          name: undefined,
+          quantity: undefined,
+          weight: undefined
         }
       ])
-    }) */
+    })
+
+    const addProduct = (target, i) => {
+      const newProduct = products.map((product, index) => {
+        if (i !== index) return product
+        //const { number, name, quantity, weight } = products[i]
+        return {
+          ...product,
+          [target.name]: target.value
+        }
+      })
+      setState({ ...state, products: newProduct })
+    }
+
 
   return(
       <>
@@ -170,16 +185,16 @@ function SellOrderCreation() {
                    <Input type="text" class="text-field w-input"  name="shippingCountry" onChange={event => addInfo(event.target)}/>
                 </div>
 
-                {/* <div style={{ textAlign: 'center', width: '100%' }}>
+                {/* <div style={{ textAlign: 'center', width: '20%' }}>
                   <p style={{ fontSize:'13px', margin: '1em' }}>Method</p>
-                  <select>{methods[0]}</select>
+                  <select>{methods[0]}</select> 
                 </div> */}
 
               </RowDiv>
 
         <br />
 
-        <ProductsDiv>
+        <ProductsDivHeader>
                 <div style={{ textAlign: 'center', width: '30%' }}>
                   <p>Product Name</p>
                 </div>
@@ -187,29 +202,29 @@ function SellOrderCreation() {
                   <p>Product Quantity</p>
                 </div>
                 <div style={{ textAlign: 'center', width: '30%' }}>
-                  <p>Product weigth</p>
+                  <p>Product Weight</p>
                 </div>
                 <div style={{ textAlign: 'right', width: '3%' }} />
-        </ProductsDiv>
+        </ProductsDivHeader>
 
+        {products.map((product, i) => (
         <ProductsDiv>
-                <div style={{ textAlign: 'center', width: '1%' }}>
-                  1.
+                <div style={{ textAlign: 'center', width: '3%' }}>
+                  {product.number}.
                 </div>
                 <div style={{ textAlign: 'center', width: '30%' }}>
-                  <Input type="text" class="text-field w-input"/>
+                  <Input type="text" class="text-field w-input" name="name" onChange={event => addProduct(event.target, i)}/>
                 </div>
                 <div style={{ textAlign: 'center', width: '30%' }}>
-                  <Input type="text" class="text-field w-input"/>
+                  <Input type="text" class="text-field w-input" name="quantity" onChange={event => addProduct(event.target, i)}/>
                 </div>
                 <div style={{ textAlign: 'center', width: '30%' }}>
-                  <Input type="text" class="text-field w-input"/>
+                  <Input type="text" class="text-field w-input" name="weight" onChange={event => addProduct(event.target, i)}/>
                 </div>
-                <div style={{ textAlign: 'right', width: '3%' }} />
-        </ProductsDiv>
+        </ProductsDiv>))}
 
         <div style={{ marginTop:'2em', display:'flex', width: '100%', justifyContent: 'center' }}>
-        <Button> Add product </Button>
+        <Button onClick={() => addLine()}> Add product </Button>
         </div>
 
       </DocumentDiv>

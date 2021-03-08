@@ -12,7 +12,7 @@ export const StyledCard = styled.div`
   margin: 2%;
   border-top: ${(props) => props.border};
 `
-export const Button = styled.div`
+export const Button = styled.a`
     border-radius: 15px;
     text-align: center;
     width: 12em;
@@ -22,6 +22,7 @@ export const Button = styled.div`
     padding: 1em;
     color: #fff;
     font-size: 14px;
+    outline:none;
     line-height: 160%;`
 
 export const Title = styled.p`
@@ -95,13 +96,27 @@ export const RowDiv = styled.div`
   }
 `
 
-export const ProductsDiv = styled.div`
+export const ProductsDivHeader = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-content: center;
   align-items: center;
   border-top: 2.5px solid ${PRIMARY_COLOR};
+  padding: 2% 2% 0% 2%;
+  p {
+    color: ${PRIMARY_COLOR};
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+`
+
+export const ProductsDiv = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
   padding: 2% 2% 0% 2%;
   p {
     color: ${PRIMARY_COLOR};
