@@ -5,6 +5,7 @@ import { Divider } from 'antd'
 import Header from './Header'
 import {
     BackgroundDiv,
+    ProductsDivHeader,
     DocumentDiv,
     RowDiv,
     ProductsDiv,
@@ -17,116 +18,125 @@ function SellOrderDetails() {
 
     return (
         <>
-        <Header/>
-        <BackgroundDiv>
-            <DocumentDiv>
-              <RowDiv>
-                <div style={{ textAlign: 'center', width: '30%' }}>
-                  <div>
-                    <img src='https://uploads-ssl.webflow.com/6006f58a9bc1bb84abf7f9b6/6006fbca47ec77fa015be5c6_logo-melonn.png' height='20em' alt='logo' />
-                  </div>
-                </div>
-    
-                <div style={{ textAlign: 'center', width: '50%' }}>
-                  <h5> MELONN </h5>
-                </div>
-    
-                <div style={{ textAlign: 'center', width: '20%' }}>
-                  <h5>
-                    <span style={{ color: PRIMARY_COLOR }}> No. </span> 1
-                  </h5>
-                </div>
-              </RowDiv>
-              <Divider />
-    
-              <RowDiv>
-                <div style={{ textAlign: 'center', width: '40%' }}>
-                  <div className='row'>
-                    <div className='col-11 my-auto'>
-                      <h6> Order Information</h6>
-                    </div>
-                  </div>
-    
-                    <div className='row'>
-                      <div className='col-9 text-center'>
-                        <div className='row'>
-                          <div className='col-6 text-left' style={{ padding: 0 }}>
-                            <p style={{ fontWeight: '500' }}>Buyer full name</p>
-                            <p style={{ fontWeight: '500' }}>Buyer phone number</p>
-                            <p style={{ fontWeight: '500' }}>Buyer email</p>
-                          </div>
-                          <div className='col-6 text-left' style={{ padding: 0 }}>
-                            <p>Angelica Moreno</p>
-                            <p>3213223925</p>
-                            <p>angelica_uno@hotmail.es</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-    
-                <div style={{ textAlign: 'center', width: '20%' }}>
-                  <h6> Shipping address</h6>
-                  <p> Cra. 5 N 5 - 20</p>
-                </div>
-    
-                <div style={{ textAlign: 'center', width: '20%' }}>
-                  <h6> Shipping city </h6>
-                  <p> Medellin </p>
-                </div>
-    
-                <div style={{ textAlign: 'center', width: '20%' }}>
-                  <h6> Shipping region</h6>
-                  <p> Antioquia </p>
-                </div>
-                <div style={{ textAlign: 'center', width: '20%' }}>
-                  <h6> Shipping country </h6>
-                  <p> Colombia </p>
-                </div>
-              </RowDiv>
-    
-              <br />
-    
-              <ProductsDiv>
-                <div style={{ textAlign: 'center', width: '30%' }}>
-                  <p>Product Name</p>
-                </div>
-                <div style={{ textAlign: 'center', width: '30%' }}>
-                  <p>Product Quantity</p>
-                </div>
-                <div style={{ textAlign: 'center', width: '30%' }}>
-                  <p>Product weigth</p>
-                </div>
 
-                <div style={{ textAlign: 'right', width: '3%' }} />
-              </ProductsDiv>
+<BackgroundDiv>
     
-              <ProductsDiv>
-                <div style={{ textAlign: 'center', width: '30%' }}>
-                      <ProductItem>
-                        Camiseta
-                      </ProductItem>
-                    </div>
-    
-                <div style={{ textAlign: 'center', width: '30%' }}>
-                      <ProductItem>
-                        10
-                      </ProductItem>
-                    </div>
+    <DocumentDiv>
+      <RowDiv>
+       <div style={{ textAlign: 'center', width: '40%' }}>
+          <div>
+            <img src='https://uploads-ssl.webflow.com/6006f58a9bc1bb84abf7f9b6/6006fbca47ec77fa015be5c6_logo-melonn.png' height='20em' alt='logo' />
+          </div>
+        </div>
 
-                <div style={{ textAlign: 'center', width: '30%' }}>
-                      <ProductItem>
-                        5 kg
-                      </ProductItem>
-                    </div>
-
-              </ProductsDiv>
-                
+        <div style={{ textAlign: 'center', width: '50%' }}>
+          <h5> MELOON </h5>        
+        </div>
   
-            </DocumentDiv>
-    
-        </BackgroundDiv>
-      </>
+              <div style={{ textAlign: 'center', width: '20%' }}>
+                <h5>
+                  <span style={{ color: PRIMARY_COLOR }}> No. </span> 1.
+                </h5>
+              </div>
+
+      </RowDiv>
+      <Divider />
+
+      <RowDiv>
+        <h6> Order Information</h6>
+      </RowDiv>
+
+      <RowDiv>
+      
+              <div style={{ textAlign: 'center', width: '30%' }}>
+              <p style={{ fontSize:'13px', margin: '1em' }}>Buyer full name</p>
+                Angelica Maria Moreno
+              </div>
+  
+              <div style={{ textAlign: 'center', width: '30%' }}>
+              <p style={{ fontSize:'13px', margin: '1em' }}>Buyer phone number</p>
+                3213223925
+              </div>
+  
+              <div style={{ textAlign: 'center', width: '30%' }}>
+              <p style={{ fontSize:'13px', margin: '1em' }}> Buyer email</p>
+                angelica_uno@hotmail.es
+              </div>
+            </RowDiv>
+      
+            <br />
+      
+      <RowDiv style={{borderTop: `1px dashed ${PRIMARY_COLOR}`, paddingTop:'2%'}}>
+        <h6> Shipping Information</h6>
+      </RowDiv>
+
+            <RowDiv>
+            <div style={{ textAlign: 'center', width: '20%' }}>
+                <p style={{ fontSize:'13px', margin: '1em' }}>Address</p>
+                Cra 5 EST # 2- 20
+              </div>
+  
+              <div style={{ textAlign: 'center', width: '20%' }}>
+                <p style={{ fontSize:'13px', margin: '1em' }}>City</p>
+                Madrid
+              </div>
+  
+              <div style={{ textAlign: 'center', width: '20%' }}>
+                <p style={{ fontSize:'13px', margin: '1em' }}>Region</p>
+                Cundinamarca
+              </div>
+
+              <div style={{ textAlign: 'center', width: '20%' }}>
+                <p style={{ fontSize:'13px', margin: '1em' }}>Country</p>
+                Colombia
+              </div>
+
+              {/* <div style={{ textAlign: 'center', width: '20%' }}>
+                <p style={{ fontSize:'13px', margin: '1em' }}>Method</p>
+                <select>{methods[0]}</select> 
+              </div> */}
+
+            </RowDiv>
+
+      <br />
+
+      <ProductsDivHeader>
+              <div style={{ textAlign: 'center', width: '4%' }}>
+                <span></span>
+              </div>
+              <div style={{ textAlign: 'center', width: '30%' }}>
+                <p>Product Name</p>
+              </div>
+              <div style={{ textAlign: 'center', width: '30%' }}>
+                <p>Product Quantity</p>
+              </div>
+              <div style={{ textAlign: 'center', width: '30%' }}>
+                <p>Product Weight</p>
+              </div>
+              <div style={{ textAlign: 'right', width: '3%' }} />
+      </ProductsDivHeader>
+
+      
+      <ProductsDiv>
+              <div style={{ textAlign: 'center', width: '2%' }}>
+                1.
+              </div>
+              <div style={{ textAlign: 'center', width: '30%' }}>
+                Camiseta
+              </div>
+              <div style={{ textAlign: 'center', width: '30%' }}>
+               10
+              </div>
+              <div style={{ textAlign: 'center', width: '30%' }}>
+                20 kg
+              </div>
+      </ProductsDiv>
+     
+
+    </DocumentDiv>
+  </BackgroundDiv>
+        
+       </>
     )
 
 }

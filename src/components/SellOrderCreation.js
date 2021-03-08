@@ -16,7 +16,6 @@ import {
 } from './styledComponents'
 
 const initialState = {
-  isFirstRender: true,
   sellerStoreName: null,
   sellerStore: null,
   shippingMethod: null,
@@ -39,7 +38,7 @@ const initialState = {
 
 function SellOrderCreation() {
   const methods = []
-  async function postData(url) {
+  async function postData(dataType, url) {
     await fetch(url, {
     method: 'GET',
     headers: {
@@ -47,7 +46,7 @@ function SellOrderCreation() {
     }
    }).then(response => response.json())
    .then( data => {
-    if(url === "https://yhua9e1l30.execute-api.us-east-1.amazonaws.com/sandbox/shipping-methods"){
+    if(dataType === "shippingMethods"){
       data.forEach(eachMethod => methods.push(
         `<option>${eachMethod.name}</option>`
         )) }
@@ -57,7 +56,7 @@ function SellOrderCreation() {
 
   //Retrieve the list of available shipping methods:
 
-  postData("https://yhua9e1l30.execute-api.us-east-1.amazonaws.com/sandbox/shipping-methods")
+  postData('shippingMethods',"https://yhua9e1l30.execute-api.us-east-1.amazonaws.com/sandbox/shipping-methods")
 
   //Retrieve shipping method details:
 
@@ -107,7 +106,6 @@ function SellOrderCreation() {
 
   return(
       <>
-      <Header/>
 
     <BackgroundDiv>
     
@@ -144,17 +142,17 @@ function SellOrderCreation() {
         
                 <div style={{ textAlign: 'center', width: '30%' }}>
                 <p style={{ fontSize:'13px', margin: '1em' }}>Buyer full name</p>
-                  <Input type="text" class="text-field w-input"  name="buyerFullName" onChange={event => addInfo(event.target)}/>
+                  <Input type="text" className="text-field w-input"  name="buyerFullName" onChange={event => addInfo(event.target)}/>
                 </div>
     
                 <div style={{ textAlign: 'center', width: '30%' }}>
                 <p style={{ fontSize:'13px', margin: '1em' }}>Buyer phone number</p>
-                  <Input type="text" class="text-field w-input"  name="buyerPhoneNumber" onChange={event => addInfo(event.target)}/>
+                  <Input type="text" className="text-field w-input"  name="buyerPhoneNumber" onChange={event => addInfo(event.target)}/>
                 </div>
     
                 <div style={{ textAlign: 'center', width: '30%' }}>
                 <p style={{ fontSize:'13px', margin: '1em' }}> Buyer email</p>
-                  <Input type="text" class="text-field w-input"  name="buyerEmail" onChange={event => addInfo(event.target)} />
+                  <Input type="text" className="text-field w-input"  name="buyerEmail" onChange={event => addInfo(event.target)} />
                 </div>
               </RowDiv>
         
@@ -167,22 +165,22 @@ function SellOrderCreation() {
               <RowDiv>
               <div style={{ textAlign: 'center', width: '20%' }}>
                   <p style={{ fontSize:'13px', margin: '1em' }}>Address</p>
-                  <Input type="text" class="text-field w-input"  name="shippingAddress" onChange={event => addInfo(event.target)}/>
+                  <Input type="text" className="text-field w-input"  name="shippingAddress" onChange={event => addInfo(event.target)}/>
                 </div>
     
                 <div style={{ textAlign: 'center', width: '20%' }}>
                   <p style={{ fontSize:'13px', margin: '1em' }}>City</p>
-                  <Input type="text" class="text-field w-input"  name="shippingCity" onChange={event => addInfo(event.target)}/>
+                  <Input type="text" className="text-field w-input"  name="shippingCity" onChange={event => addInfo(event.target)}/>
                 </div>
     
                 <div style={{ textAlign: 'center', width: '20%' }}>
                   <p style={{ fontSize:'13px', margin: '1em' }}>Region</p>
-                  <Input type="text" class="text-field w-input"  name="shippingRegion" onChange={event => addInfo(event.target)}/>
+                  <Input type="text" className="text-field w-input"  name="shippingRegion" onChange={event => addInfo(event.target)}/>
                 </div>
 
                 <div style={{ textAlign: 'center', width: '20%' }}>
                   <p style={{ fontSize:'13px', margin: '1em' }}>Country</p>
-                   <Input type="text" class="text-field w-input"  name="shippingCountry" onChange={event => addInfo(event.target)}/>
+                   <Input type="text" className="text-field w-input"  name="shippingCountry" onChange={event => addInfo(event.target)}/>
                 </div>
 
                 {/* <div style={{ textAlign: 'center', width: '20%' }}>
@@ -208,20 +206,22 @@ function SellOrderCreation() {
         </ProductsDivHeader>
 
         {products.map((product, i) => (
+        <div key={`${i}as`}>
         <ProductsDiv>
                 <div style={{ textAlign: 'center', width: '3%' }}>
                   {product.number}.
                 </div>
                 <div style={{ textAlign: 'center', width: '30%' }}>
-                  <Input type="text" class="text-field w-input" name="name" onChange={event => addProduct(event.target, i)}/>
+                  <Input type="text" className="text-field w-input" name="name" onChange={event => addProduct(event.target, i)}/>
                 </div>
                 <div style={{ textAlign: 'center', width: '30%' }}>
-                  <Input type="text" class="text-field w-input" name="quantity" onChange={event => addProduct(event.target, i)}/>
+                  <Input type="text" className="text-field w-input" name="quantity" onChange={event => addProduct(event.target, i)}/>
                 </div>
                 <div style={{ textAlign: 'center', width: '30%' }}>
-                  <Input type="text" class="text-field w-input" name="weight" onChange={event => addProduct(event.target, i)}/>
+                  <Input type="text" className="text-field w-input" name="weight" onChange={event => addProduct(event.target, i)}/>
                 </div>
-        </ProductsDiv>))}
+        </ProductsDiv>
+        </div>))}
 
         <div style={{ marginTop:'2em', display:'flex', width: '100%', justifyContent: 'center' }}>
         <Button onClick={() => addLine()}> Add product </Button>

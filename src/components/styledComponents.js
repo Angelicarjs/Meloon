@@ -11,6 +11,9 @@ export const StyledCard = styled.div`
   width: 25%;
   margin: 2%;
   border-top: ${(props) => props.border};
+  a:link, a:visited, a:active {
+    text-decoration:none;
+}
 `
 export const Button = styled.a`
     border-radius: 15px;

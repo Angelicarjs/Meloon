@@ -13,7 +13,7 @@ function SellOrderList() {
   })
   return (
     <>
-    <Header/>
+    
     <StyledCard
         background={state.background}
         style={{ cursor: 'pointer' }}
