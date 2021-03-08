@@ -16,6 +16,7 @@ import {
 } from './styledComponents'
 
 const initialState = {
+  sellerStoreName: null,
   sellerStore: null,
   shippingMethod: null,
   externalOrderNumber: null,
@@ -31,8 +32,47 @@ const initialState = {
 
 
 function SellOrderCreation() {
+  
+  const methods = []
+  async function postData(url) {
+    await fetch(url, {
+    method: 'GET',
+    headers: {
+      "X-Api-Key": "oNhW2TBOlI1t4kWb3PEad1K1S1KxKuuI3GX6rGvT"
+    }
+   }).then(response => response.json())
+   .then( data => {
+    if(url === "https://yhua9e1l30.execute-api.us-east-1.amazonaws.com/sandbox/shipping-methods"){
+      data.forEach(eachMethod => methods.push(
+        `<option>${eachMethod.name}</option>`
+        )) }
+   })
+    
+  }
+
+  console.log(typeof(methods))
+
+  //Retrieve the list of available shipping methods:
+
+  postData("https://yhua9e1l30.execute-api.us-east-1.amazonaws.com/sandbox/shipping-methods")
+
+  //Retrieve shipping method details:
+
+  //postData("https://yhua9e1l30.execute-api.us-east-1.amazonaws.com/sandbox/shipping-methods/1")
+
+  //Retrieve the list of off days:
+
+  //postData("https://yhua9e1l30.execute-api.us-east-1.amazonaws.com/sandbox/off-days")
+
 
   const [state, setState] = useState({ ...initialState })
+
+  const addInfo = (target) => {
+    setState({
+      ...state,
+      [target.name]: target.value
+    })
+  }
 
   /* const addLine = () =>
     setState({
@@ -58,21 +98,23 @@ function SellOrderCreation() {
     
       <DocumentDiv>
         <RowDiv>
-         <div style={{ textAlign: 'center', width: '30%' }}>
+         <div style={{ textAlign: 'center', width: '40%' }}>
             <div>
               <img src='https://uploads-ssl.webflow.com/6006f58a9bc1bb84abf7f9b6/6006fbca47ec77fa015be5c6_logo-melonn.png' height='20em' alt='logo' />
             </div>
           </div>
 
           <div style={{ textAlign: 'center', width: '50%' }}>
-                  <h5> MELONN </h5>
-                  <h6 style={{ color: 'grey' }}> 1018600241 </h6>
-                  <h6 style={{ color: 'grey' }}> Medellín Antioquia </h6>
+                  <div className='row'>
+                    <p style={{ fontSize:'13px', margin: '1em' }}>Seller store name</p>
+                    <Input width='80%' type="text" name ="sellerStoreName" onChange={event => addInfo(event.target)}/>
+                  </div>
+                  
           </div>
     
                 <div style={{ textAlign: 'center', width: '20%' }}>
                   <h5>
-                    <span style={{ color: PRIMARY_COLOR }}> No. </span> <Input width='20%' type="number" name ="externalOrderNumber"/>
+                    <span style={{ color: PRIMARY_COLOR }}> No. </span> <Input width='50%' type="number" name ="externalOrderNumber" onChange={event => addInfo(event.target)}/>
                   </h5>
                 </div>
 
@@ -85,19 +127,19 @@ function SellOrderCreation() {
 
         <RowDiv>
         
-                <div style={{ textAlign: 'center', width: '20%' }}>
+                <div style={{ textAlign: 'center', width: '30%' }}>
                 <p style={{ fontSize:'13px', margin: '1em' }}>Buyer full name</p>
-                  <Input type="text" class="text-field w-input"  name="buyerFullName" required=""/>
+                  <Input type="text" class="text-field w-input"  name="buyerFullName" onChange={event => addInfo(event.target)}/>
                 </div>
     
-                <div style={{ textAlign: 'center', width: '20%' }}>
+                <div style={{ textAlign: 'center', width: '30%' }}>
                 <p style={{ fontSize:'13px', margin: '1em' }}>Buyer phone number</p>
-                  <Input type="text" class="text-field w-input"  name="buyerPhoneNumber"  required=""/>
+                  <Input type="text" class="text-field w-input"  name="buyerPhoneNumber" onChange={event => addInfo(event.target)}/>
                 </div>
     
-                <div style={{ textAlign: 'center', width: '20%' }}>
+                <div style={{ textAlign: 'center', width: '30%' }}>
                 <p style={{ fontSize:'13px', margin: '1em' }}> Buyer email</p>
-                  <Input type="text" class="text-field w-input"  name="buyerEmail"  required=""/>
+                  <Input type="text" class="text-field w-input"  name="buyerEmail" onChange={event => addInfo(event.target)} />
                 </div>
               </RowDiv>
         
@@ -110,23 +152,29 @@ function SellOrderCreation() {
               <RowDiv>
               <div style={{ textAlign: 'center', width: '20%' }}>
                   <p style={{ fontSize:'13px', margin: '1em' }}>Address</p>
-                  <Input type="text" class="text-field w-input"  name="shippingAddress"  required=""/>
+                  <Input type="text" class="text-field w-input"  name="shippingAddress" onChange={event => addInfo(event.target)}/>
                 </div>
     
                 <div style={{ textAlign: 'center', width: '20%' }}>
                   <p style={{ fontSize:'13px', margin: '1em' }}>City</p>
-                  <Input type="text" class="text-field w-input"  name="shippingCity"  required=""/>
+                  <Input type="text" class="text-field w-input"  name="shippingCity" onChange={event => addInfo(event.target)}/>
                 </div>
     
                 <div style={{ textAlign: 'center', width: '20%' }}>
                   <p style={{ fontSize:'13px', margin: '1em' }}>Region</p>
-                  <Input type="text" class="text-field w-input"  name="shippingRegion"  required=""/>
+                  <Input type="text" class="text-field w-input"  name="shippingRegion" onChange={event => addInfo(event.target)}/>
                 </div>
 
                 <div style={{ textAlign: 'center', width: '20%' }}>
                   <p style={{ fontSize:'13px', margin: '1em' }}>Country</p>
-                   <Input type="text" class="text-field w-input"  name="shippingCountry"  required=""/>
+                   <Input type="text" class="text-field w-input"  name="shippingCountry" onChange={event => addInfo(event.target)}/>
                 </div>
+
+                {/* <div style={{ textAlign: 'center', width: '100%' }}>
+                  <p style={{ fontSize:'13px', margin: '1em' }}>Method</p>
+                  <select>{methods[0]}</select>
+                </div> */}
+
               </RowDiv>
 
         <br />
@@ -149,13 +197,13 @@ function SellOrderCreation() {
                   1.
                 </div>
                 <div style={{ textAlign: 'center', width: '30%' }}>
-                  <Input type="text" class="text-field w-input"  name="Nombre"  required=""/>
+                  <Input type="text" class="text-field w-input"/>
                 </div>
                 <div style={{ textAlign: 'center', width: '30%' }}>
-                  <Input type="text" class="text-field w-input"  name="Nombre"  required=""/>
+                  <Input type="text" class="text-field w-input"/>
                 </div>
                 <div style={{ textAlign: 'center', width: '30%' }}>
-                  <Input type="text" class="text-field w-input"  name="Nombre"  required=""/>
+                  <Input type="text" class="text-field w-input"/>
                 </div>
                 <div style={{ textAlign: 'right', width: '3%' }} />
         </ProductsDiv>
@@ -163,19 +211,7 @@ function SellOrderCreation() {
         <div style={{ marginTop:'2em', display:'flex', width: '100%', justifyContent: 'center' }}>
         <Button> Add product </Button>
         </div>
-        
-        {/* <div>
-          <h6 style={{ color: 'grey' }}>{textCreateTransaction[idiom].notes}</h6>
-          <TextForm
-            displayError
-            multiline
-            type='number'
-            property='notes'
-            addInfo={addInfo}
-            defaultValue={notes}
-            placeholder={textCreateTransaction[idiom].addNotes}
-          />
-        </div> */}
+
       </DocumentDiv>
     </BackgroundDiv>
   

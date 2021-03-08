@@ -29,8 +29,6 @@ function SellOrderDetails() {
     
                 <div style={{ textAlign: 'center', width: '50%' }}>
                   <h5> MELONN </h5>
-                  <h6 style={{ color: 'grey' }}> 1018600241 </h6>
-                  <h6 style={{ color: 'grey' }}> Medellín Antioquia </h6>
                 </div>
     
                 <div style={{ textAlign: 'center', width: '20%' }}>

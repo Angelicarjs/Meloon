@@ -7,11 +7,11 @@ function Header() {
   })
   return (
     <>
-    <nav class="navbar navbar-light bg-light justify-content-between">
-      <a class="navbar-brand">
+    <nav className="navbar navbar-light bg-light justify-content-between">
+      <a className="navbar-brand">
         <img width='50%' src= 'https://uploads-ssl.webflow.com/6006f58a9bc1bb84abf7f9b6/6006fbca47ec77fa015be5c6_logo-melonn.png'/>
       </a>
-    <form class="form-inline">
+    <form className="form-inline">
       {/*<Button class="btn btn-outline-success my-2 my-sm-0" >
         <Link to="./sellOrderList">
            Return Sell Order List
